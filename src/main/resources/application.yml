@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:group7
+    driverClassName: org.h2.Driver
+    username: group7
+    password: group7
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      setting:
+        trace: false
+        web-allow-others: true
+
+app:
+  swagger:
+    title: Assignment API Cohort 2
+    version: 1.0.0
+    description: API documentation Group 7
