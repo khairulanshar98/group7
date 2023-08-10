@@ -65,7 +65,7 @@ public class AppInitializer implements CommandLineRunner {
         this.transactionTypeServiceImpl.saveAll(
                 List.of(TransactionType.builder().name("Open Account").updatedAt(new Date()).build(),
                         TransactionType.builder().name("Deposit").updatedAt(new Date()).build(),
-                        TransactionType.builder().name("Withdraw").updatedAt(new Date()).build(),
+                        TransactionType.builder().name("Withdraw").updatedAt(new Date()).build()
                 ));
     }
 
