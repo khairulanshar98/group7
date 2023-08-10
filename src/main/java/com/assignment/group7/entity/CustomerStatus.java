@@ -17,7 +17,7 @@ public class CustomerStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long customerStatusId;
-    @Column(unique=true)
+    @Column(unique = true)
     private String name;
     private Date updatedAt;
     private boolean isActive;

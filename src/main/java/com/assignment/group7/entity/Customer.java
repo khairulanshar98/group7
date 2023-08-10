@@ -19,9 +19,9 @@ public class Customer {
     private long customerId;
     private String name;
     private Date updatedAt;
-    @Column(unique=true)
+    @Column(unique = true)
     private String email;
-    @Column(unique=true)
+    @Column(unique = true)
     private String phoneNumber;
     private String address;
     private String city;

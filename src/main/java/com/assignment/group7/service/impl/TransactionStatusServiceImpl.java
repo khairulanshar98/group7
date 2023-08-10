@@ -7,14 +7,17 @@ import com.assignment.group7.repository.TransactionStatusRepository;
 import com.assignment.group7.service.TransactionStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+@Service
 public class TransactionStatusServiceImpl implements TransactionStatusService {
     @Autowired
     private TransactionStatusRepository transactionStatusRepository;
+
     @Override
     public Optional<TransactionStatus> findByName(String name) throws RecordNotFoundException {
         try {

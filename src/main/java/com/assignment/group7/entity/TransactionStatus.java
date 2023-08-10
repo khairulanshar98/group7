@@ -1,9 +1,11 @@
 package com.assignment.group7.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -15,7 +17,11 @@ public class TransactionStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long transactionStatusId;
-    @Column(unique=true)
+    @Column(unique = true)
     private String name;
     private Date updatedAt;
+
+    @OneToMany(mappedBy = "transactionStatus")
+    @JsonIgnore
+    private List<Transaction> transactions;
 }

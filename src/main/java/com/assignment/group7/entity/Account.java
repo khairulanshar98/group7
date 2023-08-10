@@ -34,4 +34,12 @@ public class Account {
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
+
+//    @OneToMany(mappedBy = "sourceAccount")
+//    @JsonIgnore
+//    private List<Transaction> sourceTransactions;
+//
+//    @OneToMany(mappedBy = "targetAccount")
+//    @JsonIgnore
+//    private List<Transaction> targetTransactions;
 }

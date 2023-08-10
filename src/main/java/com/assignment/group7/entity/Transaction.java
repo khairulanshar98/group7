@@ -23,10 +23,14 @@ public class Transaction {
     private TransactionType transactionType;
 
     @ManyToOne
-    @JoinColumn(name = "account_id", nullable = false)
-    private Account sourceAccount;
+    @JoinColumn(name = "transaction_status_id", nullable = false)
+    private TransactionStatus transactionStatus;
 
-    @ManyToOne
-    @JoinColumn(name = "account_id", nullable = false)
-    private Account targetAccount;
+//    @ManyToOne
+//    @JoinColumn(name = "account_id")
+//    private Account sourceAccount;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "account_id")
+//    private Account targetAccount;
 }

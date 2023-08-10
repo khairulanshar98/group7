@@ -17,7 +17,7 @@ public class AccountCurrency {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long accountCurrencyId;
-    @Column(unique=true)
+    @Column(unique = true)
     private String name;
     private Date updatedAt;
 

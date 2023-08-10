@@ -17,11 +17,11 @@ public class TransactionType {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long transactionTypeId;
-    @Column(unique=true)
+    @Column(unique = true)
     private String name;
     private Date updatedAt;
 
-//    @OneToMany(mappedBy = "accountType")
-//    @JsonIgnore
-//    private List<Account> accounts;
+    @OneToMany(mappedBy = "transactionType")
+    @JsonIgnore
+    private List<Transaction> transactions;
 }

@@ -2,11 +2,8 @@ package com.assignment.group7.service.impl;
 
 import com.assignment.group7.dto.exception.RecordNotCreatedException;
 import com.assignment.group7.dto.exception.RecordNotFoundException;
-import com.assignment.group7.entity.AccountType;
 import com.assignment.group7.entity.TransactionType;
-import com.assignment.group7.repository.AccountTypeRepository;
 import com.assignment.group7.repository.TransactionTypeRepository;
-import com.assignment.group7.service.AccountTypeService;
 import com.assignment.group7.service.TransactionTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
