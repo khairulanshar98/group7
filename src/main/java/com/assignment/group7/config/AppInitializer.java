@@ -29,7 +29,8 @@ public class AppInitializer implements CommandLineRunner {
     private AccountServiceImpl accountServiceImpl;
     @Autowired
     private TransactionTypeServiceImpl transactionTypeServiceImpl;
-
+    @Autowired
+    private TransactionStatusServiceImpl transactionStatusServiceImpl;
     @Override
     public void run(String... args) throws Exception {
         log.info("AppInitializer");
@@ -41,6 +42,7 @@ public class AppInitializer implements CommandLineRunner {
             loadAccountStatus();
             loadAccount();
             loadTransactionType();
+            loadTransactionStatus();
         }catch (Exception e) {
             log.error("run, {}", e);
         }
@@ -66,6 +68,14 @@ public class AppInitializer implements CommandLineRunner {
                 List.of(TransactionType.builder().name("Open Account").updatedAt(new Date()).build(),
                         TransactionType.builder().name("Deposit").updatedAt(new Date()).build(),
                         TransactionType.builder().name("Withdraw").updatedAt(new Date()).build()
+                ));
+    }
+    private void loadTransactionStatus() throws RecordNotCreatedException {
+        this.transactionStatusServiceImpl.saveAll(
+                List.of(
+                        TransactionStatus.builder().name("Created").updatedAt(new Date()).build(),
+                        TransactionStatus.builder().name("Validated").updatedAt(new Date()).build(),
+                        TransactionStatus.builder().name("Rejected").updatedAt(new Date()).build()
                 ));
     }
 
