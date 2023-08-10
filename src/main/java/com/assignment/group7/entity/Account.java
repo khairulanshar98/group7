@@ -1,9 +1,11 @@
 package com.assignment.group7.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -35,11 +37,11 @@ public class Account {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
-//    @OneToMany(mappedBy = "sourceAccount")
+    //    @OneToMany(mappedBy = "sourceAccount")
 //    @JsonIgnore
 //    private List<Transaction> sourceTransactions;
 //
-//    @OneToMany(mappedBy = "targetAccount")
-//    @JsonIgnore
-//    private List<Transaction> targetTransactions;
+    @OneToMany(mappedBy = "targetAccount")
+    @JsonIgnore
+    private List<Transaction> targetTransactions;
 }

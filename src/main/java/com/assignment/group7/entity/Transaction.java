@@ -17,6 +17,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long transactionId;
     private long amount;
+    private Date updatedAt;
 
     @ManyToOne
     @JoinColumn(name = "transaction_type_id", nullable = false)
@@ -26,11 +27,11 @@ public class Transaction {
     @JoinColumn(name = "transaction_status_id", nullable = false)
     private TransactionStatus transactionStatus;
 
-//    @ManyToOne
-//    @JoinColumn(name = "account_id")
+//    @ManyToMany
+//    @JoinColumn(name = "account_id", nullable = true)
 //    private Account sourceAccount;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "account_id")
-//    private Account targetAccount;
+
+    @ManyToOne
+    @JoinColumn(name = "account_id", nullable = true)
+    private Account targetAccount;
 }

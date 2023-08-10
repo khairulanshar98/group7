@@ -31,6 +31,8 @@ public class AppInitializer implements CommandLineRunner {
     private TransactionTypeServiceImpl transactionTypeServiceImpl;
     @Autowired
     private TransactionStatusServiceImpl transactionStatusServiceImpl;
+    @Autowired
+    private TransactionServiceimpl transactionServiceimpl;
 
     @Override
     public void run(String... args) throws Exception {
@@ -41,9 +43,9 @@ public class AppInitializer implements CommandLineRunner {
             loadCustomerStatus();
             loadCustomer();
             loadAccountStatus();
-            loadAccount();
             loadTransactionType();
             loadTransactionStatus();
+            loadAccount();
         } catch (Exception e) {
             log.error("run, {}", e);
         }
@@ -133,17 +135,25 @@ public class AppInitializer implements CommandLineRunner {
         AccountType accountType = this.accountTypeServiceImpl.findByName("Saving").get();
         AccountCurrency SGD = this.accountCurrencyServiceImpl.findByName("SGD").get();
         Customer customer = this.customerServiceImpl.findByEmail("khairul@mail.com").get();
-
-        Account account = Account.builder()
+        long amount = 1000;
+        Account account = this.accountServiceImpl.create(Account.builder()
                 .accountNumber("88888888888")
                 .customer(customer)
                 .accountStatus(active)
                 .accountType(accountType)
                 .accountCurrency(SGD)
                 .updatedAt(new Date())
-                .balance(1000)
-                .build();
+                .balance(amount)
+                .build());
 
-        this.accountServiceImpl.create(account);
+        TransactionStatus transactionStatus = this.transactionStatusServiceImpl.findByName("Validated").get();
+        TransactionType transactionType = this.transactionTypeServiceImpl.findByName("Open Account").get();
+        this.transactionServiceimpl.create(Transaction.builder()
+                .amount(amount)
+                .updatedAt(new Date())
+                .transactionType(transactionType)
+                .transactionStatus(transactionStatus)
+                .targetAccount(account)
+                .build());
     }
 }
