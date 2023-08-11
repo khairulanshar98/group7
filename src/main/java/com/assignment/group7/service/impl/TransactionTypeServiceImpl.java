@@ -23,7 +23,7 @@ public class TransactionTypeServiceImpl implements TransactionTypeService {
         try {
             return this.transactionTypeRepository.findByName(name);
         } catch (NoSuchElementException e) {
-            throw RecordNotFoundException.builder().cause(e).message("Not record found.").build();
+            throw RecordNotFoundException.builder().cause(e.getCause()).message("Not record found.").build();
         }
     }
 
@@ -36,7 +36,7 @@ public class TransactionTypeServiceImpl implements TransactionTypeService {
                 return this.transactionTypeRepository.save(transactionType);
             }
         } catch (DataAccessException e) {
-            throw RecordNotCreatedException.builder().cause(e).message("Record not created.").build();
+            throw RecordNotCreatedException.builder().cause(e.getCause()).message("Record not created.").build();
         }
     }
 
@@ -45,7 +45,7 @@ public class TransactionTypeServiceImpl implements TransactionTypeService {
         try {
             return this.transactionTypeRepository.findAll();
         } catch (NoSuchElementException e) {
-            throw RecordNotFoundException.builder().cause(e).message("Not record found.").build();
+            throw RecordNotFoundException.builder().cause(e.getCause()).message("Not record found.").build();
         }
     }
 
@@ -54,7 +54,7 @@ public class TransactionTypeServiceImpl implements TransactionTypeService {
         try {
             this.transactionTypeRepository.saveAll(transactionTypes);
         } catch (DataAccessException e) {
-            throw RecordNotCreatedException.builder().cause(e).message("Records not created.").build();
+            throw RecordNotCreatedException.builder().cause(e.getCause()).message("Records not created.").build();
         }
     }
 }

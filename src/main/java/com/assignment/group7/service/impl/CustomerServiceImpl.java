@@ -23,7 +23,7 @@ public class CustomerServiceImpl implements CustomerService {
         try {
             return this.customerRepository.findByName(name);
         } catch (NoSuchElementException e) {
-            throw RecordNotFoundException.builder().cause(e).message("Not record found.").build();
+            throw RecordNotFoundException.builder().cause(e.getCause()).message("Not record found.").build();
         }
     }
 
@@ -32,7 +32,7 @@ public class CustomerServiceImpl implements CustomerService {
         try {
             return this.customerRepository.findByEmail(email);
         } catch (NoSuchElementException e) {
-            throw RecordNotFoundException.builder().cause(e).message("Not record found.").build();
+            throw RecordNotFoundException.builder().cause(e.getCause()).message("Not record found.").build();
         }
     }
 
@@ -41,7 +41,7 @@ public class CustomerServiceImpl implements CustomerService {
         try {
             return this.customerRepository.findByPhoneNumber(phoneNumber);
         } catch (NoSuchElementException e) {
-            throw RecordNotFoundException.builder().cause(e).message("Not record found.").build();
+            throw RecordNotFoundException.builder().cause(e.getCause()).message("Not record found.").build();
         }
     }
 
@@ -54,7 +54,7 @@ public class CustomerServiceImpl implements CustomerService {
                 return this.customerRepository.save(customer);
             }
         } catch (DataAccessException e) {
-            throw RecordNotCreatedException.builder().cause(e).message("Record not created.").build();
+            throw RecordNotCreatedException.builder().cause(e.getCause()).message("Record not created.").build();
         }
     }
 
@@ -63,7 +63,7 @@ public class CustomerServiceImpl implements CustomerService {
         try {
             return this.customerRepository.findAll();
         } catch (NoSuchElementException e) {
-            throw RecordNotFoundException.builder().cause(e).message("Not record found.").build();
+            throw RecordNotFoundException.builder().cause(e.getCause()).message("Not record found.").build();
         }
     }
 
@@ -72,7 +72,7 @@ public class CustomerServiceImpl implements CustomerService {
         try {
             this.customerRepository.saveAll(customers);
         } catch (DataAccessException e) {
-            throw RecordNotCreatedException.builder().cause(e).message("Records not created.").build();
+            throw RecordNotCreatedException.builder().cause(e.getCause()).message("Records not created.").build();
         }
     }
 }

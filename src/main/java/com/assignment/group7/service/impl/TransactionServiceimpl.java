@@ -23,7 +23,7 @@ public class TransactionServiceimpl implements TransactionService {
         try {
             return this.transactionRepository.findByTransactionType(transactionType);
         } catch (NoSuchElementException e) {
-            throw RecordNotFoundException.builder().cause(e).message("Not record found.").build();
+            throw RecordNotFoundException.builder().cause(e.getCause()).message("Not record found.").build();
         }
     }
 
@@ -32,7 +32,7 @@ public class TransactionServiceimpl implements TransactionService {
         try {
             return this.transactionRepository.findByTransactionStatus(transactionStatus);
         } catch (NoSuchElementException e) {
-            throw RecordNotFoundException.builder().cause(e).message("Not record found.").build();
+            throw RecordNotFoundException.builder().cause(e.getCause()).message("Not record found.").build();
         }
     }
 
@@ -45,7 +45,7 @@ public class TransactionServiceimpl implements TransactionService {
                 return this.transactionRepository.save(transaction);
             }
         } catch (DataAccessException e) {
-            throw RecordNotCreatedException.builder().cause(e).message("Record not created.").build();
+            throw RecordNotCreatedException.builder().cause(e.getCause()).message("Record not created.").build();
         }
     }
 
@@ -54,7 +54,7 @@ public class TransactionServiceimpl implements TransactionService {
         try {
             return this.transactionRepository.findAll();
         } catch (NoSuchElementException e) {
-            throw RecordNotFoundException.builder().cause(e).message("Not record found.").build();
+            throw RecordNotFoundException.builder().cause(e.getCause()).message("Not record found.").build();
         }
     }
 
@@ -63,7 +63,7 @@ public class TransactionServiceimpl implements TransactionService {
         try {
             this.transactionRepository.saveAll(transactions);
         } catch (DataAccessException e) {
-            throw RecordNotCreatedException.builder().cause(e).message("Records not created.").build();
+            throw RecordNotCreatedException.builder().cause(e.getCause()).message("Records not created.").build();
         }
     }
 }

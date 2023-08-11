@@ -23,7 +23,7 @@ public class AccountTypeServiceImpl implements AccountTypeService {
         try {
             return this.accountTypeRepository.findByName(name);
         } catch (NoSuchElementException e) {
-            throw RecordNotFoundException.builder().cause(e).message("Not record found.").build();
+            throw RecordNotFoundException.builder().cause(e.getCause()).message("Not record found.").build();
         }
     }
 
@@ -36,7 +36,7 @@ public class AccountTypeServiceImpl implements AccountTypeService {
                 return this.accountTypeRepository.save(accountType);
             }
         } catch (DataAccessException e) {
-            throw RecordNotCreatedException.builder().cause(e).message("Record not created.").build();
+            throw RecordNotCreatedException.builder().cause(e.getCause()).message("Record not created.").build();
         }
     }
 
@@ -45,7 +45,7 @@ public class AccountTypeServiceImpl implements AccountTypeService {
         try {
             return this.accountTypeRepository.findAll();
         } catch (NoSuchElementException e) {
-            throw RecordNotFoundException.builder().cause(e).message("Not record found.").build();
+            throw RecordNotFoundException.builder().cause(e.getCause()).message("Not record found.").build();
         }
     }
 
@@ -54,7 +54,7 @@ public class AccountTypeServiceImpl implements AccountTypeService {
         try {
             this.accountTypeRepository.saveAll(accountTypes);
         } catch (DataAccessException e) {
-            throw RecordNotCreatedException.builder().cause(e).message("Records not created.").build();
+            throw RecordNotCreatedException.builder().cause(e.getCause()).message("Records not created.").build();
         }
     }
 }

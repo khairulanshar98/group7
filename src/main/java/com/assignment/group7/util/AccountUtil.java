@@ -31,7 +31,8 @@ public class AccountUtil {
         return Long.parseLong(new String(digits));
     }
 
-    public Customer handleCreateAccount(RequestOfCreateAccount requestOfCreateAccount) throws RecordNotFoundException, RecordNotCreatedException {
+    @SneakyThrows
+    public Customer handleCreateAccount(RequestOfCreateAccount requestOfCreateAccount) {
         try {
             return this.customerServiceImpl.findByEmail(requestOfCreateAccount.getEmail()).get();
         } catch (Exception e) {
