@@ -7,6 +7,7 @@ import com.assignment.group7.entity.Customer;
 import com.assignment.group7.entity.CustomerStatus;
 import com.assignment.group7.service.impl.CustomerServiceImpl;
 import com.assignment.group7.service.impl.CustomerStatusServiceImpl;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
