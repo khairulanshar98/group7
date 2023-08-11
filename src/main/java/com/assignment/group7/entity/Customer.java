@@ -21,7 +21,6 @@ public class Customer {
     private Date updatedAt;
     @Column(unique = true)
     private String email;
-    @Column(unique = true)
     private String phoneNumber;
     private String address;
     private String city;

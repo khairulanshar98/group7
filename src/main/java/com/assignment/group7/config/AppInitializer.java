@@ -4,6 +4,7 @@ import com.assignment.group7.dto.exception.RecordNotCreatedException;
 import com.assignment.group7.dto.exception.RecordNotFoundException;
 import com.assignment.group7.entity.*;
 import com.assignment.group7.service.impl.*;
+import com.assignment.group7.util.AccountUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -33,6 +34,8 @@ public class AppInitializer implements CommandLineRunner {
     private TransactionStatusServiceImpl transactionStatusServiceImpl;
     @Autowired
     private TransactionServiceimpl transactionServiceimpl;
+    @Autowired
+    private AccountUtil accountUtil;
 
     @Override
     public void run(String... args) throws Exception {
@@ -137,7 +140,7 @@ public class AppInitializer implements CommandLineRunner {
         Customer customer = this.customerServiceImpl.findByEmail("khairul@mail.com").get();
         long amount = 1000;
         Account account = this.accountServiceImpl.create(Account.builder()
-                .accountNumber("88888888888")
+                .accountNumber(accountUtil.generateRandom(12))
                 .customer(customer)
                 .accountStatus(active)
                 .accountType(accountType)
@@ -155,5 +158,19 @@ public class AppInitializer implements CommandLineRunner {
                 .transactionStatus(transactionStatus)
                 .targetAccount(account)
                 .build());
+
+        /*
+
+        {
+  "name": "Khairul Anshar",
+  "email": "khairul@mail234.com",
+  "phoneNumber": "+65123456",
+  "address": "Street xyx",
+  "city": "Singapore",
+  "country": "Singapore",
+  "zipCode": 555555,
+  "amount": 2000
+}
+         */
     }
 }
